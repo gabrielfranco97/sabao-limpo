@@ -1,0 +1,1168 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sabao Limpo - Lavanderia Profissional</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=Outfit:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-primary: #00A8E8;
+      --color-primary-dark: #0096D1;
+      --color-primary-light: #E0F4FC;
+      --color-accent: #FF7A59;
+      --color-accent-dark: #E5694A;
+      --color-accent-light: #FFF0EC;
+      --color-slate-900: #1A202C;
+      --color-slate-700: #2D3748;
+      --color-slate-500: #718096;
+      --color-slate-300: #CBD5E0;
+      --color-slate-100: #EDF2F7;
+      --color-white: #FFFFFF;
+      --color-cream: #F5F5F0;
+      --font-heading: 'Outfit', system-ui, sans-serif;
+      --font-body: 'DM Sans', system-ui, sans-serif;
+      --radius-button: 8px;
+      --radius-card: 12px;
+      --radius-input: 6px;
+      --shadow-sm: 0 1px 2px 0 rgba(26, 32, 44, 0.05);
+      --shadow-md: 0 4px 6px -1px rgba(26, 32, 44, 0.1), 0 2px 4px -1px rgba(26, 32, 44, 0.06);
+      --shadow-card: 0 2px 8px rgba(0, 168, 232, 0.1);
+      --shadow-cta: 0 4px 14px rgba(255, 122, 89, 0.35);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--color-slate-700);
+      background: var(--color-white);
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: var(--font-heading);
+      color: var(--color-slate-900);
+      line-height: 1.2;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+
+    @media (min-width: 768px) {
+      .container {
+        padding: 0 32px;
+      }
+    }
+
+    /* Header */
+    .header {
+      position: sticky;
+      top: 0;
+      background: var(--color-white);
+      box-shadow: var(--shadow-sm);
+      z-index: 100;
+      height: 64px;
+    }
+
+    @media (min-width: 1024px) {
+      .header {
+        height: 72px;
+      }
+    }
+
+    .header .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 100%;
+    }
+
+    .logo {
+      font-family: var(--font-heading);
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--color-primary);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .logo-icon {
+      width: 32px;
+      height: 32px;
+      background: var(--color-primary-light);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .nav {
+      display: none;
+    }
+
+    @media (min-width: 1024px) {
+      .nav {
+        display: flex;
+        gap: 32px;
+      }
+    }
+
+    .nav-link {
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: 16px;
+      color: var(--color-slate-700);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .nav-link:hover {
+      color: var(--color-primary);
+    }
+
+    .menu-toggle {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+    }
+
+    @media (min-width: 1024px) {
+      .menu-toggle {
+        display: none;
+      }
+    }
+
+    .menu-toggle span {
+      width: 24px;
+      height: 2px;
+      background: var(--color-slate-700);
+      border-radius: 2px;
+    }
+
+    .btn {
+      font-family: var(--font-heading);
+      font-weight: 600;
+      font-size: 16px;
+      padding: 12px 24px;
+      border-radius: var(--radius-button);
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+    }
+
+    .btn-primary {
+      background: var(--color-primary);
+      color: var(--color-white);
+    }
+
+    .btn-primary:hover {
+      background: var(--color-primary-dark);
+      transform: translateY(-1px);
+    }
+
+    .btn-cta {
+      background: var(--color-accent);
+      color: var(--color-white);
+      box-shadow: var(--shadow-cta);
+      padding: 14px 28px;
+    }
+
+    .btn-cta:hover {
+      background: var(--color-accent-dark);
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--color-primary);
+      border: 2px solid var(--color-primary);
+    }
+
+    .btn-secondary:hover {
+      background: var(--color-primary-light);
+    }
+
+    .header-cta {
+      display: none;
+    }
+
+    @media (min-width: 768px) {
+      .header-cta {
+        display: inline-flex;
+      }
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 48px 0;
+      background: linear-gradient(20deg, var(--color-primary-light) 0%, var(--color-white) 100%);
+    }
+
+    @media (min-width: 1024px) {
+      .hero {
+        padding: 80px 0;
+      }
+    }
+
+    .hero .container {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    @media (min-width: 1024px) {
+      .hero .container {
+        flex-direction: row;
+        align-items: center;
+        gap: 64px;
+      }
+    }
+
+    .hero-content {
+      flex: 1;
+    }
+
+    .hero h1 {
+      font-size: 40px;
+      margin-bottom: 16px;
+    }
+
+    @media (min-width: 1024px) {
+      .hero h1 {
+        font-size: 56px;
+      }
+    }
+
+    .hero-subtitle {
+      font-size: 18px;
+      color: var(--color-slate-500);
+      margin-bottom: 32px;
+      max-width: 500px;
+    }
+
+    .hero-cta {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    @media (min-width: 480px) {
+      .hero-cta {
+        flex-direction: row;
+      }
+    }
+
+    .hero-image {
+      flex: 1;
+      background: var(--color-slate-100);
+      border-radius: 16px;
+      min-height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-slate-500);
+      font-size: 14px;
+    }
+
+    @media (min-width: 1024px) {
+      .hero-image {
+        min-height: 400px;
+      }
+    }
+
+    /* Services Section */
+    .services {
+      padding: 48px 0;
+      background: var(--color-white);
+    }
+
+    @media (min-width: 1024px) {
+      .services {
+        padding: 80px 0;
+      }
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .section-header h2 {
+      font-size: 32px;
+      margin-bottom: 16px;
+    }
+
+    @media (min-width: 1024px) {
+      .section-header h2 {
+        font-size: 40px;
+      }
+    }
+
+    .section-header p {
+      color: var(--color-slate-500);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+
+    @media (min-width: 768px) {
+      .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .services-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    .service-card {
+      background: var(--color-white);
+      border-radius: var(--radius-card);
+      padding: 24px;
+      box-shadow: var(--shadow-card);
+      border: 1px solid var(--color-slate-100);
+      transition: all 0.3s ease;
+      text-align: center;
+    }
+
+    .service-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0, 168, 232, 0.15);
+    }
+
+    .service-icon {
+      width: 64px;
+      height: 64px;
+      background: var(--color-primary-light);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
+      font-size: 28px;
+    }
+
+    .service-card h3 {
+      font-size: 20px;
+      margin-bottom: 8px;
+    }
+
+    .service-card p {
+      font-size: 14px;
+      color: var(--color-slate-500);
+    }
+
+    /* How It Works Section */
+    .how-it-works {
+      padding: 48px 0;
+      background: var(--color-cream);
+    }
+
+    @media (min-width: 1024px) {
+      .how-it-works {
+        padding: 80px 0;
+      }
+    }
+
+    .steps {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      position: relative;
+    }
+
+    @media (min-width: 1024px) {
+      .steps {
+        flex-direction: row;
+        gap: 48px;
+      }
+    }
+
+    .step {
+      flex: 1;
+      text-align: center;
+      position: relative;
+    }
+
+    .step-number {
+      width: 48px;
+      height: 48px;
+      background: var(--color-primary);
+      color: var(--color-white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 20px;
+      margin: 0 auto 16px;
+    }
+
+    .step h3 {
+      font-size: 20px;
+      margin-bottom: 8px;
+    }
+
+    .step p {
+      font-size: 14px;
+      color: var(--color-slate-500);
+    }
+
+    @media (min-width: 1024px) {
+      .step:not(:last-child)::after {
+        content: '';
+        position: absolute;
+        top: 24px;
+        right: -24px;
+        width: 48px;
+        border-top: 2px dashed var(--color-slate-300);
+      }
+    }
+
+    /* Pricing Section */
+    .pricing {
+      padding: 48px 0;
+      background: var(--color-white);
+    }
+
+    @media (min-width: 1024px) {
+      .pricing {
+        padding: 80px 0;
+      }
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    @media (min-width: 768px) {
+      .pricing-grid {
+        grid-template-columns: repeat(3, 1fr);
+        align-items: center;
+      }
+    }
+
+    .pricing-card {
+      background: var(--color-white);
+      border-radius: var(--radius-card);
+      padding: 32px;
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--color-slate-100);
+      text-align: center;
+    }
+
+    .pricing-card.featured {
+      border: 2px solid var(--color-primary);
+      box-shadow: 0 8px 24px rgba(0, 168, 232, 0.2);
+    }
+
+    @media (min-width: 768px) {
+      .pricing-card.featured {
+        transform: scale(1.05);
+      }
+    }
+
+    .pricing-badge {
+      background: var(--color-accent);
+      color: var(--color-white);
+      font-size: 12px;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 9999px;
+      display: inline-block;
+      margin-bottom: 16px;
+    }
+
+    .pricing-card h3 {
+      font-size: 24px;
+      margin-bottom: 8px;
+    }
+
+    .pricing-price {
+      font-family: var(--font-heading);
+      font-size: 48px;
+      font-weight: 700;
+      color: var(--color-primary);
+      margin-bottom: 8px;
+    }
+
+    .pricing-price span {
+      font-size: 16px;
+      color: var(--color-slate-500);
+      font-weight: 400;
+    }
+
+    .pricing-desc {
+      font-size: 14px;
+      color: var(--color-slate-500);
+      margin-bottom: 24px;
+    }
+
+    .pricing-features {
+      list-style: none;
+      margin-bottom: 24px;
+      text-align: left;
+    }
+
+    .pricing-features li {
+      padding: 8px 0;
+      border-bottom: 1px solid var(--color-slate-100);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+    }
+
+    .pricing-features li::before {
+      content: '\2713';
+      color: var(--color-primary);
+      font-weight: 700;
+    }
+
+    /* Testimonials Section */
+    .testimonials {
+      padding: 48px 0;
+      background: var(--color-primary-light);
+    }
+
+    @media (min-width: 1024px) {
+      .testimonials {
+        padding: 80px 0;
+      }
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+
+    @media (min-width: 768px) {
+      .testimonials-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .testimonial-card {
+      background: var(--color-white);
+      border-radius: var(--radius-card);
+      padding: 32px;
+      box-shadow: var(--shadow-md);
+      border-left: 4px solid var(--color-primary);
+    }
+
+    .testimonial-quote {
+      font-size: 16px;
+      font-style: italic;
+      color: var(--color-slate-700);
+      margin-bottom: 24px;
+      line-height: 1.7;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .testimonial-avatar {
+      width: 48px;
+      height: 48px;
+      background: var(--color-slate-200);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      color: var(--color-slate-500);
+    }
+
+    .testimonial-info h4 {
+      font-size: 16px;
+      margin-bottom: 2px;
+    }
+
+    .testimonial-info p {
+      font-size: 14px;
+      color: var(--color-slate-500);
+    }
+
+    /* FAQ Section */
+    .faq {
+      padding: 48px 0;
+      background: var(--color-white);
+    }
+
+    @media (min-width: 1024px) {
+      .faq {
+        padding: 80px 0;
+      }
+    }
+
+    .faq-list {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid var(--color-slate-100);
+      padding: 20px 0;
+    }
+
+    .faq-question {
+      font-family: var(--font-heading);
+      font-weight: 600;
+      font-size: 18px;
+      color: var(--color-slate-900);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: none;
+      border: none;
+      width: 100%;
+      text-align: left;
+      padding: 0;
+    }
+
+    .faq-question::after {
+      content: '+';
+      font-size: 24px;
+      color: var(--color-primary);
+      transition: transform 0.3s ease;
+    }
+
+    .faq-item.active .faq-question::after {
+      transform: rotate(45deg);
+    }
+
+    .faq-answer {
+      font-size: 16px;
+      color: var(--color-slate-500);
+      padding-top: 12px;
+      line-height: 1.6;
+      display: none;
+    }
+
+    .faq-item.active .faq-answer {
+      display: block;
+    }
+
+    /* CTA Section */
+    .cta-section {
+      padding: 64px 0;
+      background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+      text-align: center;
+    }
+
+    .cta-section h2 {
+      color: var(--color-white);
+      font-size: 32px;
+      margin-bottom: 16px;
+    }
+
+    @media (min-width: 1024px) {
+      .cta-section h2 {
+        font-size: 40px;
+      }
+    }
+
+    .cta-section p {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 18px;
+      margin-bottom: 32px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .cta-section .btn-cta {
+      background: var(--color-white);
+      color: var(--color-primary);
+    }
+
+    .cta-section .btn-cta:hover {
+      background: var(--color-cream);
+    }
+
+    /* Footer */
+    .footer {
+      padding: 48px 0 24px;
+      background: var(--color-slate-900);
+      color: var(--color-white);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 32px;
+      margin-bottom: 48px;
+    }
+
+    @media (min-width: 768px) {
+      .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .footer-grid {
+        grid-template-columns: 2fr 1fr 1fr 1fr;
+      }
+    }
+
+    .footer-brand {
+      max-width: 300px;
+    }
+
+    .footer-brand .logo {
+      color: var(--color-white);
+      margin-bottom: 16px;
+    }
+
+    .footer-brand p {
+      font-size: 14px;
+      color: var(--color-slate-300);
+      line-height: 1.7;
+    }
+
+    .footer-column h4 {
+      font-size: 16px;
+      margin-bottom: 16px;
+      color: var(--color-white);
+    }
+
+    .footer-column ul {
+      list-style: none;
+    }
+
+    .footer-column li {
+      margin-bottom: 8px;
+    }
+
+    .footer-column a {
+      color: var(--color-slate-300);
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.2s ease;
+    }
+
+    .footer-column a:hover {
+      color: var(--color-primary-light);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid var(--color-slate-700);
+      padding-top: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      text-align: center;
+    }
+
+    @media (min-width: 768px) {
+      .footer-bottom {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+      }
+    }
+
+    .footer-bottom p {
+      font-size: 14px;
+      color: var(--color-slate-500);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    .footer-links a {
+      font-size: 14px;
+      color: var(--color-slate-500);
+      text-decoration: none;
+    }
+
+    .footer-links a:hover {
+      color: var(--color-primary-light);
+    }
+
+    /* Utility Classes */
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      border: 0;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Skip Navigation -->
+  <a href="#main" class="sr-only">Pular para o conteudo principal</a>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <a href="#" class="logo">
+        <span class="logo-icon">S</span>
+        Sabao Limpo
+      </a>
+      <nav class="nav" aria-label="Navegacao principal">
+        <a href="#servicos" class="nav-link">Servicos</a>
+        <a href="#como-funciona" class="nav-link">Como Funciona</a>
+        <a href="#precos" class="nav-link">Precos</a>
+        <a href="#depoimentos" class="nav-link">Depoimentos</a>
+        <a href="#faq" class="nav-link">FAQ</a>
+      </nav>
+      <a href="#agendar" class="btn btn-primary header-cta">Agendar Coleta</a>
+      <button class="menu-toggle" aria-label="Abrir menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main id="main">
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <h1>Roupas limpas sem sair de casa</h1>
+          <p class="hero-subtitle">Lavanderia profissional com coleta e entrega gratis. Cuidamos das suas roupas como se fossem nossas.</p>
+          <div class="hero-cta">
+            <a href="#agendar" class="btn btn-cta">Agendar Coleta Gratis</a>
+            <a href="#como-funciona" class="btn btn-secondary">Como Funciona</a>
+          </div>
+        </div>
+        <div class="hero-image" aria-label="Imagem de roupa limpa e dobrada">
+          [Hero Image Placeholder - 16:9]
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="servicos" class="services">
+      <div class="container">
+        <header class="section-header">
+          <h2>Nossos Servicos</h2>
+          <p>Oferecemos uma variedade de servicos para atender todas as suas necessidades de lavanderia.</p>
+        </header>
+        <div class="services-grid">
+          <article class="service-card">
+            <div class="service-icon" aria-hidden="true">&#x1F9FA;</div>
+            <h3>Lavagem</h3>
+            <p>Lavagem completa com produtos de alta qualidade. Separacao por cores e tecidos.</p>
+          </article>
+          <article class="service-card">
+            <div class="service-icon" aria-hidden="true">&#x1F455;</div>
+            <h3>Passadoria</h3>
+            <p>Pecas impecavelmente passadas, prontas para vestir. Cuidado especial com cada tecido.</p>
+          </article>
+          <article class="service-card">
+            <div class="service-icon" aria-hidden="true">&#x1F69A;</div>
+            <h3>Delivery</h3>
+            <p>Coleta e entrega gratis na sua porta. Agendamento flexivel de acordo com sua rotina.</p>
+          </article>
+          <article class="service-card">
+            <div class="service-icon" aria-hidden="true">&#x23F1;</div>
+            <h3>Express</h3>
+            <p>Servico urgente em ate 24 horas. Ideal para situacoes de emergencia.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="como-funciona" class="how-it-works">
+      <div class="container">
+        <header class="section-header">
+          <h2>Como Funciona</h2>
+          <p>Em apenas 3 passos simples, suas roupas estarao limpas e cheirosas.</p>
+        </header>
+        <div class="steps">
+          <article class="step">
+            <div class="step-number">1</div>
+            <h3>Agende a Coleta</h3>
+            <p>Escolha o melhor dia e horario para buscarmos suas roupas. Sem compromisso.</p>
+          </article>
+          <article class="step">
+            <div class="step-number">2</div>
+            <h3>Lavamos com Cuidado</h3>
+            <p>Separamos, lavamos e passamos cada peca com atencao e produtos de qualidade.</p>
+          </article>
+          <article class="step">
+            <div class="step-number">3</div>
+            <h3>Entregamos na Porta</h3>
+            <p>Suas roupas limpas, dobradas e embaladas, entregues no horario combinado.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="precos" class="pricing">
+      <div class="container">
+        <header class="section-header">
+          <h2>Planos e Precos</h2>
+          <p>Escolha o plano ideal para voce. Todos incluem coleta e entrega gratis.</p>
+        </header>
+        <div class="pricing-grid">
+          <article class="pricing-card">
+            <h3>Basico</h3>
+            <div class="pricing-price">R$79<span>/mes</span></div>
+            <p class="pricing-desc">Ideal para pessoas que moram sozinhas</p>
+            <ul class="pricing-features">
+              <li>Ate 8kg por mes</li>
+              <li>Lavagem e secagem</li>
+              <li>1 coleta semanal</li>
+              <li>Entrega em 72h</li>
+            </ul>
+            <a href="#agendar" class="btn btn-secondary" style="width: 100%;">Escolher Plano</a>
+          </article>
+          <article class="pricing-card featured">
+            <span class="pricing-badge">Mais Popular</span>
+            <h3>Familia</h3>
+            <div class="pricing-price">R$149<span>/mes</span></div>
+            <p class="pricing-desc">Perfeito para familias de 3-4 pessoas</p>
+            <ul class="pricing-features">
+              <li>Ate 20kg por mes</li>
+              <li>Lavagem, secagem e passadoria</li>
+              <li>2 coletas semanais</li>
+              <li>Entrega em 48h</li>
+              <li>Pecas delicadas incluidas</li>
+            </ul>
+            <a href="#agendar" class="btn btn-cta" style="width: 100%;">Escolher Plano</a>
+          </article>
+          <article class="pricing-card">
+            <h3>Premium</h3>
+            <div class="pricing-price">R$249<span>/mes</span></div>
+            <p class="pricing-desc">Para quem quer o maximo de conveniencia</p>
+            <ul class="pricing-features">
+              <li>Ate 40kg por mes</li>
+              <li>Todos os servicos inclusos</li>
+              <li>Coletas ilimitadas</li>
+              <li>Entrega em 24h</li>
+              <li>Lavagem a seco</li>
+              <li>Suporte prioritario</li>
+            </ul>
+            <a href="#agendar" class="btn btn-secondary" style="width: 100%;">Escolher Plano</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="depoimentos" class="testimonials">
+      <div class="container">
+        <header class="section-header">
+          <h2>O Que Nossos Clientes Dizem</h2>
+          <p>Veja por que milhares de pessoas confiam na Sabao Limpo.</p>
+        </header>
+        <div class="testimonials-grid">
+          <article class="testimonial-card">
+            <blockquote class="testimonial-quote">
+              "Mudou minha vida! Nao preciso mais me preocupar com lavanderia. As roupas sempre voltam impecaveis e cheirosas."
+            </blockquote>
+            <footer class="testimonial-author">
+              <div class="testimonial-avatar" aria-hidden="true">MF</div>
+              <div class="testimonial-info">
+                <h4>Maria Fernanda</h4>
+                <p>Sao Paulo, SP</p>
+              </div>
+            </footer>
+          </article>
+          <article class="testimonial-card">
+            <blockquote class="testimonial-quote">
+              "Servico excelente! Pontualidade na entrega e qualidade impecavel. Recomendo para todas as familias ocupadas."
+            </blockquote>
+            <footer class="testimonial-author">
+              <div class="testimonial-avatar" aria-hidden="true">JS</div>
+              <div class="testimonial-info">
+                <h4>Joao Santos</h4>
+                <p>Rio de Janeiro, RJ</p>
+              </div>
+            </footer>
+          </article>
+          <article class="testimonial-card">
+            <blockquote class="testimonial-quote">
+              "O plano familia e perfeito para nos. Economizo tempo e ainda por cima as roupas ficam melhores do que eu lavava."
+            </blockquote>
+            <footer class="testimonial-author">
+              <div class="testimonial-avatar" aria-hidden="true">AC</div>
+              <div class="testimonial-info">
+                <h4>Ana Carolina</h4>
+                <p>Belo Horizonte, MG</p>
+              </div>
+            </footer>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="faq">
+      <div class="container">
+        <header class="section-header">
+          <h2>Perguntas Frequentes</h2>
+          <p>Tire suas duvidas sobre nossos servicos.</p>
+        </header>
+        <div class="faq-list">
+          <div class="faq-item active">
+            <button class="faq-question">Como funciona a coleta?</button>
+            <div class="faq-answer">
+              Voce agenda pelo site ou WhatsApp, escolhendo dia e horario. Nosso entregador vai ate sua casa com uma sacola especial. Basta colocar as roupas e pronto!
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">Quanto tempo demora para receber as roupas?</button>
+            <div class="faq-answer">
+              O prazo padrao e de 48 a 72 horas, dependendo do plano escolhido. Temos tambem servico express em 24 horas para urgencias.
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">Vocês lavam todos os tipos de roupa?</button>
+            <div class="faq-answer">
+              Sim! Lavamos roupas do dia a dia, roupas de cama, toalhas, pecas delicadas e ate roupas que precisam de lavagem a seco. Verificamos cada etiqueta.
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">E se uma peça for danificada?</button>
+            <div class="faq-answer">
+              Temos seguro para todas as pecas. Caso ocorra algum dano, ressarcimos o valor integral da peca. Mas fique tranquilo, isso raramente acontece!
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">Posso cancelar a qualquer momento?</button>
+            <div class="faq-answer">
+              Sim, nao temos fidelidade. Voce pode cancelar seu plano a qualquer momento sem multas ou taxas adicionais.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="agendar" class="cta-section">
+      <div class="container">
+        <h2>Pronto para ter mais tempo livre?</h2>
+        <p>Experimente gratis sua primeira coleta. Sem compromisso, sem cartao de credito.</p>
+        <a href="#" class="btn btn-cta">Agendar Primeira Coleta Gratis</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#" class="logo">
+            <span class="logo-icon">S</span>
+            Sabao Limpo
+          </a>
+          <p>Lavanderia profissional com coleta e entrega. Cuidando das suas roupas desde 2020.</p>
+        </div>
+        <div class="footer-column">
+          <h4>Servicos</h4>
+          <ul>
+            <li><a href="#">Lavagem</a></li>
+            <li><a href="#">Passadoria</a></li>
+            <li><a href="#">Lavagem a Seco</a></li>
+            <li><a href="#">Servico Express</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Empresa</h4>
+          <ul>
+            <li><a href="#">Sobre Nos</a></li>
+            <li><a href="#">Como Funciona</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Trabalhe Conosco</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Contato</h4>
+          <ul>
+            <li><a href="tel:+5511999999999">(11) 99999-9999</a></li>
+            <li><a href="mailto:contato@sabaolimpo.com.br">contato@sabaolimpo.com.br</a></li>
+            <li><a href="#">WhatsApp</a></li>
+            <li><a href="#">Instagram</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>2025 Sabao Limpo. Todos os direitos reservados.</p>
+        <div class="footer-links">
+          <a href="#">Politica de Privacidade</a>
+          <a href="#">Termos de Uso</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // FAQ Accordion
+    document.querySelectorAll('.faq-question').forEach(button => {
+      button.addEventListener('click', () => {
+        const item = button.parentElement;
+        const isActive = item.classList.contains('active');
+
+        // Close all items
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+
+        // Open clicked item if it wasn't active
+        if (!isActive) {
+          item.classList.add('active');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
